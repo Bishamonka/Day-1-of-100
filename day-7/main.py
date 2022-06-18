@@ -26,7 +26,7 @@ while not end_of_game:
         letter = chosen_word[position]
         if letter == guess:
             display[position] = letter
-            print(f"Letter '{guess}' is right!\n")
+            print(f"Letter '{guess}' is right!\n") # More random answers is needed
 
     # Check if user is wrong.
     if guess not in chosen_word:
