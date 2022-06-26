@@ -1,6 +1,5 @@
 def blackjack():
-
-  # Imports
+  
   import random
   from art import logo
 
