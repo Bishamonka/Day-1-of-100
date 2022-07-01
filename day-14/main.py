@@ -14,12 +14,9 @@ while not end_game:
   if score > 0: # So the message and score will appear after every successfull answer
     print(f"Correct! Your score now is: {score}") 
 
-    
-  # /// TOO COMPLEX SOLUTION /// #
-  # # Get random integers to pull dictionaries from game_data.py
+
   # indext_of_a = random.randint(0, len(data) - 1)
   # indext_of_b = random.randint(0, len(data) - 1)
-  # # As soon as we don't remove variants from 'game_data.py' we gotta prevent chosing two identical variants/indexes):
   # if indext_of_b == indext_of_a:
   #   while indext_of_b == indext_of_a:
   #     indext_of_b = random.randint(0, len(data))
