@@ -5,6 +5,7 @@ print("2 Days")
 print("More than that...")
 print("It was tough week")
 print("A terrible headache...")
+print("I slept for the whole evening. It's ruined. It's 23:30 now.")
 
 MENU = {
     'espresso': {
