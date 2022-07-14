@@ -6,6 +6,7 @@ print("More than that...")
 print("It was tough week")
 print("A terrible headache...")
 print("I slept for the whole evening. It's ruined. It's 23:30 now.")
+print("Missing just one day kicked my wish to do anything right to the floor. But seems like I really like it so'll continue... step by step, baby step.")
 
 MENU = {
     'espresso': {
@@ -42,7 +43,6 @@ resources = {
 money = 0
 
 
-
 def ask_user_choice():
     return input(f"""
 What would you like?
@@ -67,19 +67,16 @@ def switch_off():
     exit("Machine stopped")
 
 
-# for key in {resources['water']}:
-# print(MENU['latte'])
-if 'milk' in MENU['latte']['ingredients']:
-    print("It needs milk!")
-
-
-# user_input = ask_user_choice()
-# if user_input == "off":
-#     switch_off()
-# elif user_input == "report":
-#     report()
-# # elif user_input == "espresso":
-#     # resources_check(MENU['espresso'])
-
+user_input = ask_user_choice()
+if user_input == "off":
+    switch_off()
+elif user_input == "report":
+    report()
+elif user_input == "espresso":
+    print(f"User wants Espresso")
+elif user_input == "latte":
+    print(f"User wants Latte")
+elif user_input == "cappuccino":
+    print(f"User wants Cappuccino")
 
 
