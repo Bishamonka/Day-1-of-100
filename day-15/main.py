@@ -80,3 +80,13 @@ elif user_input == "cappuccino":
     print(f"User wants Cappuccino")
 
 
+def user_purchase():
+    quarters = 0.25 * int(input(f"How many quarters?\n"))
+    dimes = 0.10 * int(input(f"How many dimes?\n"))
+    nickles = 0.05 * int(input(f"How many nickles?\n"))
+    pennies = 0.01 * int(input(f"How many pennies?\n"))
+    purchase = quarters + dimes + nickles + pennies
+    return purchase
+
+
+print(f"${user_purchase()}")
