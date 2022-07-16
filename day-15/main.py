@@ -86,7 +86,10 @@ def user_purchase():
     nickles = 0.05 * int(input(f"How many nickles?\n"))
     pennies = 0.01 * int(input(f"How many pennies?\n"))
     purchase = quarters + dimes + nickles + pennies
+    global MONEY
+    MONEY += purchase
     return purchase
 
 
 print(f"${user_purchase()}")
+report()
