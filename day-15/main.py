@@ -1,46 +1,6 @@
-print("Hello word!")
-print("Finally! We are moving to Py Charm. I can`t wait to start building stuff in here!")
-print("I've missed yesteeday's contribution... This is gonna drive me crazy for a whole year( ")
-print("2 Days")
-print("More than that...")
-print("It was tough week")
-print("A terrible headache...")
-print("I slept for the whole evening. It's ruined. It's 23:30 now.")
-print("Missing just one day kicked my wish to do anything right to the floor. But seems like I really like it so'll continue... step by step, baby step.")
-
-MENU = {
-    'espresso': {
-        'ingredients': {
-            'water': 50,
-            'coffee': 18,
-        },
-        'cost': 1.5,
-    },
-    'latte': {
-        'ingredients': {
-            'water': 200,
-            'milk': 150,
-            'coffee': 24,
-        },
-        'cost': 2.5,
-    },
-    'cappuccino': {
-        'ingredients': {
-            'water': 250,
-            'milk': 100,
-            'coffee': 24,
-        },
-        'cost': 3.0,
-    }
-}
-
-resources = {
-    'water': 300,
-    'milk': 200,
-    'coffee': 100,
-}
-
-money = 0
+from menu import MENU
+from menu import resources
+MONEY = 0
 
 
 def ask_user_choice():
@@ -54,33 +14,68 @@ Cappuccino: ${MENU['cappuccino']['cost']}
 Your choice: """).lower()
 
 
-def report():
+def print_report():
     print(f"""
 Water: {resources['water']}ml
 Milk: {resources['milk']}ml
 Coffee: {resources['coffee']}g
-Money: ${money}
+Money: ${MONEY}
     """)
 
 
-def switch_off():
-    exit("Machine stopped")
+def switch_off_machine():
+    exit("Machine stopped.")
 
 
 user_input = ask_user_choice()
+drink_choice = user_input
+
+if 'milk' in drink_choice:
+    milk_needed = True
+else:
+    milk_needed = False
+
+
 if user_input == "off":
-    switch_off()
+    switch_off_machine()
 elif user_input == "report":
-    report()
+    print_report()
 elif user_input == "espresso":
-    print(f"User wants Espresso")
+    drink_cost = MENU['espresso']['cost']
+    drink_ingredients = MENU['espresso']['ingredients']
 elif user_input == "latte":
-    print(f"User wants Latte")
+    drink_cost = MENU['latte']['cost']
+    drink_ingredients = MENU['latte']['ingredients']
 elif user_input == "cappuccino":
-    print(f"User wants Cappuccino")
+    drink_cost = MENU['cappuccino']['cost']
+    drink_ingredients = MENU['cappuccino']['ingredients']
+else:
+    print('Invalid Input. Try again.')
+    switch_off_machine()
+
+
+def resources_check(machine_resource, there_is_milk):
+    """
+    Checks if there are enough resources in machine to make a chosen drink.
+    :param machine_resource:
+    :param there_is_milk:
+    :return: True / False
+    """
+    if machine_resource['water'] >= drink_ingredients['water']:
+        if machine_resource['coffee'] >= drink_ingredients['coffee']:
+            return True
+    elif there_is_milk:
+        if machine_resource['milk'] >= drink_ingredients['milk']:
+            return True
+    else:
+        return False
+
+
+enough_resources = resources_check(resources, milk_needed)
 
 
 def user_purchase():
+    print("Please, insert money:")
     quarters = 0.25 * int(input(f"How many quarters?\n"))
     dimes = 0.10 * int(input(f"How many dimes?\n"))
     nickles = 0.05 * int(input(f"How many nickles?\n"))
@@ -91,5 +86,19 @@ def user_purchase():
     return purchase
 
 
-print(f"${user_purchase()}")
-report()
+print(f"User chose: {drink_choice}")
+print(f"Drink costs: {drink_cost}")
+print(f"Ingredients: {drink_ingredients}")
+print(f"Machine has enough resources: {enough_resources}")
+user_purchase = user_purchase()
+money_inserted = user_purchase
+print(f"Last purchase: {money_inserted}")
+
+
+if money_inserted >= drink_cost:
+    change = money_inserted - drink_cost
+    print(f"Success! Enjoy your coffee!")
+    print(f"Here's your change: ${change}")
+else:
+    print(f"Sorry that's not enough money. Money refunded.")
+    print(f"Here's your refund: ${money_inserted}")
