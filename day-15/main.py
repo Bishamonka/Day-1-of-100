@@ -79,14 +79,6 @@ enough_resources = resources_check(resources, milk_needed)
 
 print(f"\nYou chose '{drink_name}'")
 print(f"Please, insert ${drink_cost}")
-#     print('''
-# Please, insert money.
-# Reminder:
-# Quarter — $0.25
-# Dime — $0.10
-# Nickle — $0.05
-# Pennie — $0.01
-#     ''')
 
 
 def user_purchase():
@@ -112,13 +104,6 @@ def user_purchase():
         return purchase
     purchase = (quarters + dimes + nickles + pennies) / 100
     return purchase
-
-
-# # Debug information
-# print(f"User chose: {drink_choice}")
-# print(f"Drink costs: ${drink_cost}")
-# print(f"Ingredients: {drink_ingredients}")
-# print(f"Machine has enough resources: {enough_resources}")
 
 
 user_purchase = user_purchase()
