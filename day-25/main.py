@@ -26,10 +26,9 @@ while len(list_of_guessed_states) < 50:
             list_of_guessed_states.append(user_guess)
             new_state = LabelMaker(user_guess, state_name_x_coordinate, state_name_y_coordinate)
 
-states_to_learn = []
-for state in data.state:
-    if state not in list_of_guessed_states:
-        states_to_learn.append(state)
-
+states_to_learn = [state for state in data.state if state not in list_of_guessed_states]
+# for state in data.state:
+#     if state not in list_of_guessed_states:
+#         states_to_learn.append(state)
 df = pandas.DataFrame(states_to_learn)
 df.to_csv("states_to_learn.csv")
