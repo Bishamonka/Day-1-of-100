@@ -1,3 +1,17 @@
+"""
+
+Using 'alphavantage.co' gets stock information for past two days of a chosen company.
+
+Shows stock prices the day before yesterday and yesterday.
+Shows change in price in percents between past two days.
+
+When stock price increases/decreases by certain percents (ALERT_PERCENT) between yesterday and the day before yesterday
+gets the first 3 news pieces relative to the chosen company (COMPANY_NAME) using 'newsapi.org'.
+
+Creates JSON file that icludes: date, company name, NASDAQ symbol, price change, 3 related news articels.
+
+"""
+
 import requests
 import json
 from datetime import date
