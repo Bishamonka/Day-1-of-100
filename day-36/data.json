@@ -1,0 +1,23 @@
+{
+    "Date": "2022-12-13",
+    "Company": "Tesla",
+    "Stock": "TSLA",
+    "PriceChangeInPercents": -1.65,
+    "NewsArticles": [
+        {
+            "Headline": "'Do Yourself A Favor and Get A Polestar': Tesla Owner Says He Was Trapped in a Tesla Model Y",
+            "Brief": "The Tesla owner noted that the company's customer service was sympathetic and offered to buy him a hotel for the night.",
+            "URL": "https://www.entrepreneur.com/business-news/tesla-owner-says-he-was-trapped-in-his-tesla-model-y/440939"
+        },
+        {
+            "Headline": "Tesla will face stock buyback pressure from activist investors next year after shares get cut in half in 2022, Wedbush says",
+            "Brief": "Tesla shares were down 6% on Monday, erasing another $30 billion in market cap to extend this year's dismal performance for the stock.",
+            "URL": "https://markets.businessinsider.com/news/stocks/tesla-stock-buyback-program-activist-investor-pressure-elon-musk-wedbush-2022-12"
+        },
+        {
+            "Headline": "NASA chief asks SpaceX president if Elon Musk is too distracted with Twitter",
+            "Brief": "Tesla investors have also expressed concern that the billionaire had \"abandoned\" the electric-car maker in favor of the social media company.",
+            "URL": "https://www.businessinsider.com/nasa-chief-asks-spacex-exec-elon-musk-distracted-with-twitter-2022-12"
+        }
+    ]
+}
