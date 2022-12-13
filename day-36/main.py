@@ -1,15 +1,10 @@
 """
-
 Using 'alphavantage.co' gets stock information for past two days of a chosen company.
-
 Shows stock prices the day before yesterday and yesterday.
 Shows change in price in percents between past two days.
-
 When stock price increases/decreases by certain percents (ALERT_PERCENT) between yesterday and the day before yesterday
 gets the first 3 news pieces relative to the chosen company (COMPANY_NAME) using 'newsapi.org'.
-
-Creates JSON file that icludes: date, company name, NASDAQ symbol, price change, 3 related news articels.
-
+Creates JSON file that includes: date, company name, NASDAQ symbol, price change, 3 related news articles.
 """
 
 import requests
@@ -19,9 +14,9 @@ from datetime import timedelta
 
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla"
-API_KEY_STOCKS = "0"
-API_KEY_NEWS = "0"
-ALERT_PERCENT = 1  # Value in percents, that corresponds when to get you articles related to the company.
+API_KEY_STOCKS = "901AVH6CTU0FFWVN"
+API_KEY_NEWS = "d5b7aa972bac49ad8bbe7227ecc1d515"
+ALERT_PERCENT = 5  # Value in percents, that corresponds when to get you articles related to the company.
 
 icons = {
     "up": "🟢 +",
@@ -57,22 +52,22 @@ stocks_data = api_stocks_request.json()
 one_day_ago_stocks_data = list(list(stocks_data.values())[1].values())[0]
 two_days_ago_stocks_data = list(list(stocks_data.values())[1].values())[1]
 
-closing_price = two_days_ago_stocks_data['4. close']
-opening_price = one_day_ago_stocks_data['1. open']
+two_days_ago_price = two_days_ago_stocks_data['4. close']
+yesterdays_price = one_day_ago_stocks_data['4. close']
 
 # Get the percentage of how the price has changed while the market was closed
-stock_price_change = round(100 * (float(opening_price) - float(closing_price)) / float(closing_price), 2)
+stock_price_change = round(100 * (float(yesterdays_price) - float(two_days_ago_price)) / float(two_days_ago_price), 2)
 
 print(f"\nCurrent choice:\n"
       f"{COMPANY_NAME} ({STOCK})")
 
-if opening_price > closing_price:
+if yesterdays_price > two_days_ago_price:
     print(f"Stock price increased between the day before yesterday and yesterday.\n"
-          f"${closing_price} -> ${opening_price}\n"
+          f"${two_days_ago_price} -> ${yesterdays_price}\n"
           f"{icons['up']}{stock_price_change}%\n")
-elif opening_price < closing_price:
+elif yesterdays_price < two_days_ago_price:
     print(f"Stock price decreased between the day before yesterday and yesterday.\n"
-          f"${closing_price} -> ${opening_price}\n"
+          f"${two_days_ago_price} -> ${yesterdays_price}\n"
           f"{icons['down']}{stock_price_change}%\n")
 else:
     print(f"Stock price stayed the same between yesterday and the day before yesterday.\n")
