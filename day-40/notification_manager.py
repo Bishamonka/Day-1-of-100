@@ -2,10 +2,10 @@ import smtplib
 from email.mime.text import MIMEText
 from twilio.rest import Client
 
-TWILIO_SID = "ACe6ecb39c53551b6402692d0569438872"
-TWILIO_AUTH_TOKEN = "56190ead200ff7e35c4a0b00ed0b01f3"
-TWILIO_VIRTUAL_NUMBER = "+12522812583"
-TWILIO_VERIFIED_NUMBER = "+380968626660"
+TWILIO_SID = os.getenv('TWILIO_SID')
+TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
+TWILIO_VIRTUAL_NUMBER = os.getenv('TWILIO_VIRTUAL_NUMBER')
+TWILIO_VERIFIED_NUMBER = os.getenv('TWILIO_VERIFIED_NUMBER')
 
 customers = ["bishamon.dev@gmail.com"]
 
@@ -26,8 +26,8 @@ class NotificationManager:
 
     def send_emails(self, message):
         for customer in customers:
-            my_email = 'futa.master@hotmail.com'
-            password = "futanari1337"
+            my_email = os.getenv('my_email')
+            password = os.getenv('password')
 
             msg = MIMEText(message)
             msg['Subject'] = "New Cheap Flights!"
